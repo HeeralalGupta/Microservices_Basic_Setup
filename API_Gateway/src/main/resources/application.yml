@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: API-Gateway
+
+# API routing configuration 
+  cloud:
+    gateway:
+      routes:
+      - id: welcome-api
+        uri: lb://WELCOME-MICROSERVICE
+        predicates:
+        - Path=/welcome
+      - id: greet-api
+        uri: lb://MICROSERVICE-GREETING
+        predicates:
+        - Path=/greeting
+        
+server:
+  port: 1000       
+        
